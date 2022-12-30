@@ -18,6 +18,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function poppers () {
 try{
     const userCollection = client.db('Poppers').collection('users');
+    const mediaCollection = client.db('Poppers').collection('media');
     
     /* const user = {
         name: 'tabu',
@@ -30,6 +31,13 @@ try{
         const poppersUser = req.body;
         // console.log(poppersUser);
         const result = await userCollection.insertOne(poppersUser)
+        res.send(result);
+    })
+
+    app.post('/media', async(req, res)=>{
+        const media = req.body;
+        // console.log(media);
+        const result = await mediaCollection.insertOne(media)
         res.send(result);
     })
 }
