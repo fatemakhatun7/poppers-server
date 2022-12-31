@@ -19,6 +19,7 @@ async function poppers () {
 try{
     const userCollection = client.db('Poppers').collection('users');
     const mediaCollection = client.db('Poppers').collection('media');
+    const profileCollection = client.db('Poppers').collection('profile');
     
     /* const user = {
         name: 'tabu',
@@ -38,6 +39,13 @@ try{
         const media = req.body;
         // console.log(media);
         const result = await mediaCollection.insertOne(media)
+        res.send(result);
+    })
+
+    app.post('/profile', async(req, res)=>{
+        const profile = req.body;
+        // console.log(profile);
+        const result = await profileCollection.insertOne(profile)
         res.send(result);
     })
 }
