@@ -42,6 +42,13 @@ try{
         res.send(result);
     })
 
+    app.get('/media', async(req, res)=>{
+        const query = {}
+        const cursor = mediaCollection.find(query);
+        const media = await cursor.toArray();
+        res.send(media);
+    })
+
     app.post('/profile', async(req, res)=>{
         const profile = req.body;
         // console.log(profile);
