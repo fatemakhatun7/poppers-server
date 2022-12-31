@@ -48,6 +48,13 @@ try{
         const result = await profileCollection.insertOne(profile)
         res.send(result);
     })
+
+    app.get('/profile', async (req, res) => {
+        const query = {}
+        const cursor = profileCollection.find(query);
+        const profile = await cursor.toArray();
+        res.send(profile);
+    });
 }
 finally{
 
